@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$quirotech-frontend-primary: mat.define-palette(mat.$teal-palette);
+$quirotech-frontend-accent: mat.define-palette(mat.$teal-palette, A200, A100, A400);
+$quirotech-frontend-warn: mat.define-palette(mat.$teal-palette, A100);
+$quirotech-frontend-theme: mat.define-light-theme((
+  color: (
+    primary: $quirotech-frontend-primary,
+    accent: $quirotech-frontend-accent,
+    warn: $quirotech-frontend-warn,
+  )
+));
+
+@include mat.all-component-themes($quirotech-frontend-theme);
+
+@import '@angular/material/theming';
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

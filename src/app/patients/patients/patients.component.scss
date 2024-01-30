@@ -1,0 +1,62 @@
+table {
+  width: 100%;
+}
+
+.loading-spinner{
+  padding: 50px;
+  background: rgba(114, 112, 112, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$centered-headers: ("CPF");
+.header {
+  @if index($centered-headers, "CPF") {
+    text-align: center;
+  } @else {
+    text-align: left;
+  }
+}
+.container {
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .header {
+    text-align: left;
+
+    @media (max-width: 767px) {
+      text-align: center; // Para telas menores (móveis)
+    }
+
+    @media (min-width: 768px) {
+      font-size: 16px; // Ajusta o tamanho da fonte para tablets
+    }
+
+    @media (min-width: 992px) {
+      font-size: 18px; // Ajusta o tamanho da fonte para telas maiores
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 20px; // Tamanho padrão da fonte para telas maiores
+    }
+    @media (max-width: 899px) {
+      display: block; // Altera para o modo de bloco em telas menores que 900px
+      width: 100%; // Ocupa a largura total
+      box-sizing: border-box; // Considera a largura total incluindo bordas e preenchimento
+    }
+  }
+
+  .header-content {
+    padding: 15px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
