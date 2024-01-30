@@ -6,33 +6,34 @@ This project is the frontend application for Quirotech, generated with [Angular 
 
 To run the development server, execute `ng serve`. Navigate to `http://localhost:4200/` in your browser. The application will automatically reload if you make any changes to the source files.
 
-## Code Scaffolding
+## Technologies Used
 
-You can generate new components, directives, pipes, services, classes, guards, interfaces, enums, or modules using Angular CLI. For example:
-- To generate a new component, run `ng generate component component-name`.
-- To generate other artifacts, replace `component-name` with the desired name and type (directive, pipe, service, etc.).
+### Angular
+Angular is a popular front-end framework for building single-page applications. It provides powerful features such as two-way data binding, dependency injection, and component-based architecture, making it ideal for developing dynamic web applications.
 
-## Building the Application
+### Angular Material
+Angular Material is a UI component library for Angular applications. It provides a set of pre-built UI components following Material Design guidelines, such as buttons, forms, navigation components, and more. Angular Material helps in creating consistent and visually appealing user interfaces with minimal effort.
 
-To build the project, execute `ng build`. The build artifacts will be stored in the `dist/` directory.
+### Connectivity with Endpoints
+The frontend application is connected to backend endpoints using Angular's HttpClient module. It communicates with the backend server to fetch and send data, enabling seamless integration between the frontend and backend layers of the application.
 
-## Running Unit Tests
+### Error Handling
+The application includes error handling mechanisms to gracefully handle errors that may occur during data retrieval or API calls. It displays meaningful error messages to the user and provides feedback on any unexpected issues encountered during usage.
 
-To execute unit tests using Karma, run `ng test`.
+## Development Commands
 
-## Running End-to-End Tests
+- **Code Scaffolding**: You can generate new components, directives, pipes, services, classes, guards, interfaces, enums, or modules using Angular CLI. For example:
+  - To generate a new component, run `ng generate component component-name`.
+  - To generate other artifacts, replace `component-name` with the desired name and type (directive, pipe, service, etc.).
 
-To execute end-to-end tests, run `ng e2e`. Before using this command, you need to add a package that implements end-to-end testing capabilities.
+- **Building the Application**: To build the project, execute `ng build`. The build artifacts will be stored in the `dist/` directory.
 
-## Getting Further Help
+- **Running Unit Tests**: To execute unit tests using Karma, run `ng test`.
 
-For more help on Angular CLI commands, use `ng help` or visit the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Running End-to-End Tests**: To execute end-to-end tests, run `ng e2e`. Before using this command, you need to add a package that implements end-to-end testing capabilities.
 
 ## User Interface Preview
-
-You can include a screenshot or a preview of the user interface of your application here. To add a screenshot, simply upload an image file and reference it in this README.
 
 ![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/c4b61df1-3672-41a6-a0f2-0f5228f477aa)
 ![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/f859eda2-97c7-441e-82dc-83c03fc7d948)
 ![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/bf3eea59-0f96-440c-936d-0210f453c50e)
-
