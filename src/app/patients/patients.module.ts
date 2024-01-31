@@ -8,20 +8,24 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     PatientsComponent
   ],
-    imports: [
-        CommonModule,
-        PatientsRoutingModule,
-        MatTableModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-      MatButtonModule
+  imports: [
+    CommonModule,
+    PatientsRoutingModule,
+    MatTableModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    FormsModule
 
-    ]
+  ]
 })
 export class PatientsModule { }

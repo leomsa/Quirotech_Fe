@@ -12,22 +12,21 @@ import {ErrorDialogComponent} from "../../shared/components/error-dialog/error-d
   styleUrls: ['./patients.component.scss']
 })
 export class PatientsComponent implements OnInit {
-
   patients$: Observable<Patient[]>;
   displayedColumns = ['name', 'cpf', 'bornDate', 'gender', 'email', 'phone', 'address', 'houseNumber', 'details', 'city', 'district', 'zipCode'];
+  searchCpf: string = '';
 
   constructor(
     private patientService: PatientsService,
-    public dialog: MatDialog)
-  {
+    public dialog: MatDialog) {
     this.patients$ = this.patientService.listAllPatients()
       .pipe(
-        map(patients =>{
-          if(patients.length === 0){
+        map(patients => {
+          if (patients.length === 0) {
             this.onError("Nenhum paciente encontrado.");
           }
           return patients;
-        } ),
+        }),
         catchError(error => {
           this.onError("Não foi possível carregar a Lista de pacientes.");
           return of([]);
@@ -57,5 +56,13 @@ export class PatientsComponent implements OnInit {
       .filter((c: any) => c.contactType === 'EMAIL')
       .map((c: any) => c.contactValue);
     return emailContacts;
+  }
+
+  searchByCpf() {
+    if (this.searchCpf) {
+    this.patientService.listPatientByCpf(this.searchCpf);
+    }else {
+      this.patientService.listAllPatients();
+    }
   }
 }
