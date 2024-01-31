@@ -19,6 +19,7 @@ export class PatientsService {
     return this.httpClient.get<Patient[]>(this.API);
   }
   listPatientByCpf(cpf: string):Observable<Patient>{
-    return this.httpClient.get<Patient>(`${this.API_CPF}/${cpf}`);
+    const url = `${this.API_CPF}?cpf=${cpf}`;
+    return this.httpClient.get<Patient>(url);
   }
 }
