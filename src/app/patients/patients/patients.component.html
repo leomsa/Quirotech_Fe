@@ -6,7 +6,13 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let patient"> {{ patient.name }}</td>
+        <td mat-cell *matCellDef="let patient">
+          {{ patient.name }}
+        <button mat-icon-button color="primary" class="custom-mini-fab">
+          <mat-icon class="mat-icon-sm">open_in_new</mat-icon>
+        </button>
+        </td>
+
       </ng-container>
 
       <!-- cpf Column -->
