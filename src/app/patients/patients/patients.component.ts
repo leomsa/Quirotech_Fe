@@ -60,9 +60,20 @@ export class PatientsComponent implements OnInit {
 
   searchByCpf() {
     if (this.searchCpf) {
-    this.patientService.listPatientByCpf(this.searchCpf);
-    }else {
-      this.patientService.listAllPatients();
+      this.patientService.listPatientByCpf(this.searchCpf).subscribe(
+        (patient) => {
+          if (patient && Object.keys(patient).length !== 0) {
+            this.patients$ = of([patient]);
+          } else {
+            this.onError("Nenhum paciente encontrado com o CPF fornecido.");
+          }
+        },
+        (error) => {
+          this.onError("Ocorreu um erro ao buscar pacientes por CPF.");
+        }
+      );
+    } else {
+      this.onError("Nenhum CPF fornecido para a pesquisa.");
     }
   }
 }
