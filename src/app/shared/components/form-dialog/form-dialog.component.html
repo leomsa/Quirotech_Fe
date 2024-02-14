@@ -1,8 +1,50 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<h2 mat-dialog-title style="color: #26a69a"> Cadastro de Paciente</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>Develop across all platforms</h3>
+  <form id="patientForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" name="cpf" required><br><br>
+
+    <label for="bornDate">Data de Nascimento:</label>
+    <input type="text" id="bornDate" name="bornDate" required><br><br>
+
+    <label for="gender">Gênero:</label>
+    <input type="text" id="gender" name="gender" required><br><br>
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phoneNumber">Número de Telefone:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+
+    <label for="address">Endereço:</label>
+    <input type="text" id="address" name="address" required><br><br>
+
+    <label for="houseNumber">Número da Casa:</label>
+    <input type="text" id="houseNumber" name="houseNumber" required><br><br>
+
+    <label for="details">Detalhes:</label>
+    <input type="text" id="details" name="details"><br><br>
+
+    <label for="city">Cidade:</label>
+    <input type="text" id="city" name="city" required><br><br>
+
+    <label for="district">Distrito:</label>
+    <input type="text" id="district" name="district" required><br><br>
+
+    <label for="zipCode">CEP:</label>
+    <input type="text" id="zipCode" name="zipCode" required><br><br>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close color="primary">Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" color="primary"  cdkFocusInitial>Criar</button>
+  <button mat-button [mat-dialog-close]="true" color="primary" cdkFocusInitial>Criar</button>
 </mat-dialog-actions>
