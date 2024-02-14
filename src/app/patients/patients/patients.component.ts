@@ -4,6 +4,8 @@ import {PatientsService} from "../services/patients.service";
 import {catchError, map, Observable, of} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../../shared/components/error-dialog/error-dialog.component";
+import {FormDialogComponent} from "../../shared/components/form-dialog/form-dialog.component";
+
 
 
 @Component({
@@ -73,5 +75,9 @@ export class PatientsComponent implements OnInit {
     } else {
       this.onError("Nenhum CPF fornecido para a pesquisa.");
     }
+  }
+
+  createPatient() {
+    this.dialog.open(FormDialogComponent);
   }
 }

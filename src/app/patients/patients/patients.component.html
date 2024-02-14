@@ -1,13 +1,19 @@
 <mat-card>
   <mat-toolbar color="primary">
     <span style="flex: 1;">Lista de Pacientes</span>
-    <span>
+    <span style="margin-right: 2%">
     <mat-form-field appearance="standard" style="font-size: x-small">
       <mat-label>Pesquisar por CPF</mat-label>
       <input matInput [(ngModel)]="searchCpf" (keyup.enter)="searchByCpf()" placeholder="Digite o CPF">
     </mat-form-field>
   <button mat-icon-button (click)="searchByCpf()"><mat-icon>search</mat-icon></button>
 </span>
+    <span>
+      <div style="margin-top: 10px"> Novo Paciente
+      <button mat-icon-button (click)="createPatient()"><mat-icon>add</mat-icon></button>
+      </div>
+    </span>
+
   </mat-toolbar>
   <div *ngIf="patients$ | async as patients; else loading ">
     <table mat-table [dataSource]="patients$" class="mat-elevation-z8">
