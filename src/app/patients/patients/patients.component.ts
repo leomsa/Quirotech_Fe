@@ -64,12 +64,10 @@ export class PatientsComponent implements OnInit {
         (patient) => {
           if (patient && Object.keys(patient).length !== 0) {
             this.patients$ = of([patient]);
-          } else {
-            this.onError("Nenhum paciente encontrado com o CPF fornecido.");
           }
         },
         (error) => {
-          this.onError("Ocorreu um erro ao buscar pacientes por CPF.");
+          this.onError("Nenhum paciente encontrado com o CPF fornecido.");
         }
       );
     } else {
