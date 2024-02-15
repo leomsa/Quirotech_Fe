@@ -25,7 +25,6 @@ import {FormsModule} from "@angular/forms";
     MatButtonModule,
     MatInputModule,
     FormsModule
-
   ]
 })
 export class PatientsModule { }

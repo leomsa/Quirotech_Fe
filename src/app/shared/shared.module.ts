@@ -4,6 +4,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -15,7 +16,9 @@ import { FormDialogComponent } from './components/form-dialog/form-dialog.compon
   imports: [
     CommonModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

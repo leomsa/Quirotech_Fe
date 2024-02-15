@@ -14,6 +14,7 @@ export class PatientsService {
 
   private readonly API = 'http://localhost:8080/patient/allpatients';
   private readonly API_CPF = 'http://localhost:8080/patient/user';
+  private readonly API_CREATE = 'http://localhost:8080/patient/create';
 
   listAllPatients() {
     return this.httpClient.get<Patient[]>(this.API);
@@ -21,5 +22,8 @@ export class PatientsService {
   listPatientByCpf(cpf: string):Observable<Patient>{
     const url = `${this.API_CPF}?cpf=${cpf}`;
     return this.httpClient.get<Patient>(url);
+  }
+createPatient(patient: Patient): Observable<Patient>{
+    return this.httpClient.post<Patient>(this.API_CREATE, patient);
   }
 }
