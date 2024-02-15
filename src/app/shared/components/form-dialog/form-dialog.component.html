@@ -1,6 +1,8 @@
 <h2 mat-dialog-title style="color: #26a69a"> Cadastro de Paciente</h2>
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="patientForm"  (ngSubmit)="submitForm()">
+  <form [formGroup]="patientForm" (ngSubmit)="submitForm()">
+
+    <!-- Patient data -->
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" formControlName="username"><br><br>
 
@@ -19,30 +21,38 @@
     <label for="password">Senha:</label>
     <input type="password" id="password" name="password" formControlName="password"><br><br>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" formControlName="email"><br><br>
+    <!-- Contact info -->
+    <div class="panel panel-default" formGroupName="contact">
+      <div class="panel-heading"  style="color: #26a69a"><h2>Informações de Contato</h2></div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" formControlName="contactValue"><br><br>
 
-    <label for="phoneNumber">Número de Telefone:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"><br><br>
+      <label for="phoneNumber">Número de Telefone:</label>
+      <input type="tel" id="phoneNumber" name="phoneNumber" formControlName="contactValue"><br><br>
+    </div>
 
-    <label for="address">Endereço:</label>
-    <input type="text" id="address" name="address" formControlName="address"><br><br>
+    <!-- Address Information -->
+    <div class="panel panel-default" formGroupName="address">
+      <div class="panel-heading" style="color: #26a69a"><h2>Informações de Endereço</h2></div>
 
+      <label for="address">Endereço:</label>
+      <input type="text" id="address" name="address" formControlName="address"><br><br>
 
-    <label for="houseNumber">Número da Casa:</label>
-    <input type="text" id="houseNumber" name="houseNumber" formControlName="houseNumber"><br><br>
+      <label for="houseNumber">Número da Casa:</label>
+      <input type="text" id="houseNumber" name="houseNumber" formControlName="houseNumber"><br><br>
 
-    <label for="details">Detalhes:</label>
-    <input type="text" id="details" name="details" formControlName="details"><br><br>
+      <label for="details">Detalhes:</label>
+      <input type="text" id="details" name="details" formControlName="details"><br><br>
 
-    <label for="city">Cidade:</label>
-    <input type="text" id="city" name="city" formControlName="city"><br><br>
+      <label for="city">Cidade:</label>
+      <input type="text" id="city" name="city" formControlName="city"><br><br>
 
-    <label for="district">Estado:</label>
-    <input type="text" id="district" name="district" formControlName="district"><br><br>
+      <label for="district">Estado:</label>
+      <input type="text" id="district" name="district" formControlName="district"><br><br>
 
-    <label for="zipCode">CEP:</label>
-    <input type="text" id="zipCode" name="zipCode" formControlName="zipCode"><br><br>
+      <label for="zipCode">CEP:</label>
+      <input type="text" id="zipCode" name="zipCode" formControlName="zipCode"><br><br>
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -29,14 +29,14 @@ export class FormDialogComponent implements OnInit {
       bornDate: ['', Validators.required],
       gender: ['', Validators.required],
       password: ['', Validators.required],
-      contact: this.formBuilder.array([
+      contact: this.formBuilder.group([
         this.formBuilder.group({
           contactValue: ['', [Validators.required, Validators.email]],
-          contactType: ['EMAIL ']
+          contactType: ['EMAIL']
         }),
         this.formBuilder.group({
           contactValue: ['', Validators.required],
-          contactType: ['PHONE_NUMBER']
+          contactType: ['phoneNumber']
         })
       ]),
       address: this.formBuilder.group({
