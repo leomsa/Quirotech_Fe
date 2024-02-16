@@ -46,10 +46,10 @@ export class FormDialogComponent implements OnInit {
     const form = document.getElementById('patientForm') as HTMLFormElement;
     const formData = new FormData(form);
     const patient = {
-      userName: formData.get('username') as string,
+      username: formData.get('username') as string,
       name: formData.get('name') as string,
       cpf: formData.get('cpf') as string,
-      bornDate: formData.get('bornDate') as string,
+      bornDate: formData.get('date') as string,
       gender: formData.get('gender') as string,
       password: formData.get('password') as string,
       contact: [

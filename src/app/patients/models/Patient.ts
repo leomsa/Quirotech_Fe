@@ -2,7 +2,7 @@ import {Contact} from "./Contact";
 import {Address} from "./Adrress";
 
 export interface Patient {
-  userName: string;
+  username: string;
   name: string;
   cpf: string;
   bornDate: string;
