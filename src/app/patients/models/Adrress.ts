@@ -1,5 +1,4 @@
 export interface Address {
-  id: number;
   address: string;
   houseNumber: string;
   details: string;

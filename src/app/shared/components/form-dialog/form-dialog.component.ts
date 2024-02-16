@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { PatientsService } from "../../../patients/services/patients.service";
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {PatientsService} from "../../../patients/services/patients.service";
+import {ContactType} from "../../../patients/models/ContactType";
 
 @Component({
   selector: 'app-form-dialog',
@@ -15,7 +16,8 @@ export class FormDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -29,39 +31,54 @@ export class FormDialogComponent implements OnInit {
       bornDate: ['', Validators.required],
       gender: ['', Validators.required],
       password: ['', Validators.required],
-      contact: this.formBuilder.group([
-        this.formBuilder.group({
-          contactValue: ['', [Validators.required, Validators.email]],
-          contactType: ['EMAIL']
-        }),
-        this.formBuilder.group({
-          contactValue: ['', Validators.required],
-          contactType: ['phoneNumber']
-        })
-      ]),
-      address: this.formBuilder.group({
-        address: ['', Validators.required],
-        houseNumber: ['', Validators.required],
-        details: [''],
-        city: ['', Validators.required],
-        district: ['', Validators.required],
-        zipCode: ['', Validators.required]
-      })
+      telephone: ['', Validators.required],
+      email: ['', Validators.required],
+      address: ['', Validators.required],
+      houseNumber: ['', Validators.required],
+      details: [''],
+      city: ['', Validators.required],
+      district: ['', Validators.required],
+      zipCode: ['', Validators.required]
     });
   }
 
-  submitForm(): void {
-    if (this.patientForm.valid) {
-      const formData = this.patientForm.value;
-      this.patientService.createPatient(formData).subscribe(
-        (response) => {
-          console.log('Paciente criado com sucesso:', response);
-          this.dialogRef.close();
+  savePatient() {
+    const form = document.getElementById('patientForm') as HTMLFormElement;
+    const formData = new FormData(form);
+    const patient = {
+      userName: formData.get('username') as string,
+      name: formData.get('name') as string,
+      cpf: formData.get('cpf') as string,
+      bornDate: formData.get('bornDate') as string,
+      gender: formData.get('gender') as string,
+      password: formData.get('password') as string,
+      contact: [
+        {
+          contactValue: formData.get('email') as string,
+          contactType: ContactType.EMAIL
         },
-        (error) => {
-          console.error('Erro ao criar paciente:', error);
+        {
+          contactValue: formData.get('phone') as string,
+          contactType: ContactType.PHONE_NUMBER
         }
-      );
-    }
+      ],
+      address: {
+        address: formData.get('address') as string,
+        houseNumber: formData.get('houseNumber') as string,
+        details: formData.get('details') as string,
+        city: formData.get('city') as string,
+        district: formData.get('district') as string,
+        zipCode: formData.get('zipCode') as string
+      }
+    };
+    this.patientService.createPatient(patient).subscribe(
+      (response) => {
+        console.log(response);
+        this.dialogRef.close();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

@@ -1,4 +1,4 @@
 export enum ContactType {
-  EMAIL = 'email',
-  PHONE_NUMBER = 'phone'
+  EMAIL = 'EMAIL',
+  PHONE_NUMBER = 'PHONE_NUMBER'
 }

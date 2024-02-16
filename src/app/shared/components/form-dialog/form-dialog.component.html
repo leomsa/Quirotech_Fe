@@ -11,10 +11,10 @@
     <input type="text" id="cpf" name="cpf" required><br><br>
 
     <label for="bornDate">Data de Nascimento:</label>
-    <input type="text" id="bornDate" name="bornDate" required><br><br>
+    <input type="text" id="bornDate" name="date" placeholder="dd-mm-yyyy" mask="00-00-0000">
 
     <label for="gender">Gênero:</label>
-    <input type="text" id="gender" name="gender" required><br><br>
+    <input type="text" id="gender" placeholder="(M/F)" name="gender" required><br><br>
 
     <label for="password">Senha:</label>
     <input type="password" id="password" name="password" required><br><br>
@@ -22,29 +22,29 @@
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required><br><br>
 
-    <label for="phoneNumber">Número de Telefone:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+    <label for="phone">Número de Telefone:</label>
+    <input type="tel" id="phone" name="phone" placeholder="51984332942" required><br><br>
 
-    <label for="address">Endereço:</label>
+    <label for="address">Rua:</label>
     <input type="text" id="address" name="address" required><br><br>
 
     <label for="houseNumber">Número da Casa:</label>
     <input type="text" id="houseNumber" name="houseNumber" required><br><br>
 
-    <label for="details">Detalhes:</label>
-    <input type="text" id="details" name="details"><br><br>
+    <label for="details">Observações:</label>
+    <input type="text" id="details"  placeholder="APTO 402 BL.A" name="details"><br><br>
 
     <label for="city">Cidade:</label>
     <input type="text" id="city" name="city" required><br><br>
 
-    <label for="district">Distrito:</label>
-    <input type="text" id="district" name="district" required><br><br>
+    <label for="district">Estado:</label>
+    <input type="text" id="district" placeholder="RS" name="district" required><br><br>
 
     <label for="zipCode">CEP:</label>
-    <input type="text" id="zipCode" name="zipCode" required><br><br>
+    <input type="text" id="zipCode" placeholder="93285000" name="zipCode" required><br><br>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close color="primary">Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" color="primary" cdkFocusInitial>Criar</button>
+  <button mat-button [mat-dialog-close]="true" color="primary" (click)="savePatient()">Salvar</button>
 </mat-dialog-actions>

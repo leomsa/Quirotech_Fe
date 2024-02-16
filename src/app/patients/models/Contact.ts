@@ -1,5 +1,5 @@
+import {ContactType} from "./ContactType";
 export interface Contact {
-  id: number;
   contactValue: string;
-  contactType: string;
+  contactType: ContactType;
 }
