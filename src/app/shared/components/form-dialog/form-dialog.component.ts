@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatientsService} from "../../../patients/services/patients.service";
 import {ContactType} from "../../../patients/models/ContactType";
+import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
+import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
 
 @Component({
   selector: 'app-form-dialog',
@@ -15,7 +17,8 @@ export class FormDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) {
   }
 
@@ -74,11 +77,19 @@ export class FormDialogComponent implements OnInit {
     this.patientService.createPatient(patient).subscribe(
       (response) => {
         console.log(response);
-        this.dialogRef.close();
+        this.onSuccess("Paciente cadastrado com sucesso.");
+        window.location.reload();
       },
       (error) => {
         console.log(error);
+        this.onSuccess("Erro ao cadastrar pacicente!");
       }
     );
+  }
+
+  onSuccess(errorMsg: string) {
+    this.dialog.open(SuccessDialogComponent, {
+      data: errorMsg
+    });
   }
 }

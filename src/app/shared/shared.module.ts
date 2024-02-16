@@ -7,11 +7,13 @@ import { FormDialogComponent } from './components/form-dialog/form-dialog.compon
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxMaskModule } from 'ngx-mask';
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 
 @NgModule({
   declarations: [
     ErrorDialogComponent,
     FormDialogComponent,
+    SuccessDialogComponent,
   ],
   imports: [
     CommonModule,
