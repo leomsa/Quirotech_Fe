@@ -83,13 +83,18 @@ export class FormDialogComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.onSuccess("Erro ao cadastrar pacicente!");//TODO: error message
+        this.onErrror("Não foi possível cadastrar pacicente, revise o cadastro!");
       }
     );
   }
 
   onSuccess(errorMsg: string) {
     this.dialog.open(SuccessDialogComponent, {
+      data: errorMsg
+    });
+  }
+  onErrror(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
   }
