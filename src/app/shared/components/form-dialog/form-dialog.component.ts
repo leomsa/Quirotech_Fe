@@ -5,6 +5,7 @@ import {PatientsService} from "../../../patients/services/patients.service";
 import {ContactType} from "../../../patients/models/ContactType";
 import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
+import {PatientsComponent} from "../../../patients/patients/patients.component";
 
 @Component({
   selector: 'app-form-dialog',
@@ -18,7 +19,8 @@ export class FormDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private patientsComponent: PatientsComponent
   ) {
   }
 
@@ -82,7 +84,7 @@ export class FormDialogComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.onSuccess("Erro ao cadastrar pacicente!");
+        this.patientsComponent.onError("Erro ao cadastrar pacicente!");
       }
     );
   }
