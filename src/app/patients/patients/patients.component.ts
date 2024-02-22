@@ -5,6 +5,7 @@ import {catchError, map, Observable, of} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../../shared/components/error-dialog/error-dialog.component";
 import {FormDialogComponent} from "../../shared/components/form-dialog/form-dialog.component";
+import {SuccessDialogComponent} from "../../shared/components/success-dialog/success-dialog.component";
 
 
 
@@ -79,5 +80,19 @@ export class PatientsComponent implements OnInit {
 
   createPatient() {
     this.dialog.open(FormDialogComponent);
+  }
+  deletePatientbyCpf(cpf: string) {
+    this.patientService.deletePatient(cpf).subscribe(
+      () => {
+        this.dialog.open(SuccessDialogComponent, {
+          data: "Paciente excluído com sucesso."
+        });
+      },
+      (error) => {
+        this.dialog.open(ErrorDialogComponent, {
+          data: "Não foi possível excluir o paciente."
+        });
+      }
+    );
   }
 }
