@@ -97,4 +97,7 @@ export class FormDialogComponent implements OnInit {
       data: errorMsg
     });
   }
+  convertToUppercase(event: any): void {
+    event.target.value = event.target.value.toUpperCase();
+  }
 }

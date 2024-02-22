@@ -1,6 +1,6 @@
 <h1 mat-dialog-title class="dialogHeader"> Cadastro de Paciente</h1>
 <mat-dialog-content class="mat-typography">
-  <form id="patientForm">
+  <form id="patientForm" (input)="convertToUppercase($event)">
     <label for="username" style="margin-top: 20px">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
 
@@ -17,7 +17,7 @@
     <input type="text" id="gender" placeholder="(M/F)" name="gender" required><br><br>
 
     <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" required><br><br>
+    <input type="password" id="password" name="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required><br><br>
