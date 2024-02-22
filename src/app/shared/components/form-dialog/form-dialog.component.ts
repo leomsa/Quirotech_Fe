@@ -19,8 +19,7 @@ export class FormDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog,
-    private patientsComponent: PatientsComponent
+    public dialog: MatDialog
   ) {
   }
 
@@ -84,7 +83,7 @@ export class FormDialogComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.patientsComponent.onError("Erro ao cadastrar pacicente!");
+        this.onSuccess("Erro ao cadastrar pacicente!");//TODO: error message
       }
     );
   }
