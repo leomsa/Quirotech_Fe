@@ -34,7 +34,7 @@ The application includes error handling mechanisms to gracefully handle errors t
 
 ## User Interface Preview
 
-![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/7f90a4a5-1468-4d86-a9e9-df9d0a21f0c0)
+![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/6b257229-f83a-4a82-8a29-c05ff87313c0)
 ![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/fac9bfa7-890e-45da-a985-4c1a48016201)
 ![image](https://github.com/leomsa/Quirotech_Fe/assets/99422003/7e3fae9b-53fa-4381-9487-e96ff456c701)
 ![deletePatienttítulo](https://github.com/leomsa/Quirotech_Fe/assets/99422003/75f2b3c9-5383-4818-81d4-a3672c8b4bcd)
