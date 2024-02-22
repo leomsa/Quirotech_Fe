@@ -78,7 +78,6 @@ export class FormDialogComponent implements OnInit {
       (response) => {
         console.log(response);
         this.onSuccess("Paciente cadastrado com sucesso.");
-        window.location.reload();
       },
       (error) => {
         console.log(error);

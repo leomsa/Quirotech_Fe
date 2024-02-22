@@ -14,6 +14,9 @@ export class SuccessDialogComponent implements OnInit {
 
   closeDialogAndReload(): void {
     this.dialogRef.close();
+    this.dialogRef.afterClosed().subscribe(() => {
+      window.location.reload();
+    });
   }
 
   ngOnInit(): void {
