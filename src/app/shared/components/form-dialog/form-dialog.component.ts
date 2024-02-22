@@ -5,7 +5,6 @@ import {PatientsService} from "../../../patients/services/patients.service";
 import {ContactType} from "../../../patients/models/ContactType";
 import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
-import {PatientsComponent} from "../../../patients/patients/patients.component";
 
 @Component({
   selector: 'app-form-dialog',
@@ -93,6 +92,7 @@ export class FormDialogComponent implements OnInit {
       data: errorMsg
     });
   }
+
   onErrror(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
