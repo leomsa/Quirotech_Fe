@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatientsService} from "../../../patients/services/patients.service";
 import {ContactType} from "../../../patients/models/ContactType";
@@ -13,17 +13,20 @@ import {SuccessDialogComponent} from "../success-dialog/success-dialog.component
 })
 export class FormDialogComponent implements OnInit {
   patientForm!: FormGroup;
+  patientData: any;
 
   constructor(
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
 
   ngOnInit(): void {
     this.initForm();
+    this.updatedPatientForm();
   }
 
   initForm(): void {
@@ -99,5 +102,25 @@ export class FormDialogComponent implements OnInit {
   }
   convertToUppercase(event: any): void {
     event.target.value = event.target.value.toUpperCase();
+  }
+
+  private updatedPatientForm() {
+    this.patientForm.patchValue({
+      username: this.data.username,
+      name: this.data.name,
+      cpf: this.data.cpf,
+      bornDate: this.data.bornDate,
+      gender: this.data.gender,
+      password: this.data.password,
+      telephone: this.data.contact[1].contactValue,
+      email: this.data.contact[0].contactValue,
+      address: this.data.address.address,
+      houseNumber: this.data.address.houseNumber,
+      details: this.data.address.details,
+      city: this.data.address.city,
+      district: this.data.address.district,
+      zipCode: this.data.address.zipCode
+    });
+    console.table(this.patientForm.value);
   }
 }
