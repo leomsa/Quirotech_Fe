@@ -25,6 +25,7 @@
           {{ patient.name }}
           <button mat-icon-button color="primary" class="custom-mini-fab">
             <mat-icon class="mat-icon-sm">open_in_new</mat-icon>
+            <mat-icon class="mat-icon-sm" (click)="updatePatient(patient)">edit</mat-icon>
             <mat-icon class="mat-icon-sm" (click)="deletePatientbyCpf(patient.cpf)">delete</mat-icon>
           </button>
         </td>

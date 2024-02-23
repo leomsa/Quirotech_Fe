@@ -95,4 +95,10 @@ export class PatientsComponent implements OnInit {
       }
     );
   }
+
+  updatePatient(patient: Patient) {
+    this.dialog.open(FormDialogComponent, {
+      data: patient
+    });
+  }
 }
