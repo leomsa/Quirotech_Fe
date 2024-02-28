@@ -66,7 +66,7 @@ export class FormDialogComponent implements OnInit {
       password: this.patientForm.get('password')?.value as string,
       contact: [
         {
-          contactValue: patientForm.get('Email')?.value as string,
+          contactValue: this.patientForm.get('email')?.value as string,
           contactType: ContactType.EMAIL
         },
         {
@@ -107,8 +107,9 @@ export class FormDialogComponent implements OnInit {
     });
   }
 
-  convertToUppercase(event: any): void {
-    event.target.value = event.target.value.toUpperCase();
+  convertToUppercase(event: any, controlName: string): void {
+    const inputValue = event.target.value.toUpperCase();
+    this.patientForm.get(controlName)?.setValue(inputValue);
   }
 
   private updatedPatientForm(patient: Patient) {

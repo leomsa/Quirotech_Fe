@@ -1,12 +1,12 @@
 <h1 mat-dialog-title class="dialogHeader"> Cadastro de Paciente</h1>
 <mat-dialog-content class="mat-typography">
-  <form autocomplete="off"  [formGroup]="patientForm" (input)="convertToUppercase($event)">
+  <form autocomplete="off"  [formGroup]="patientForm" >
 
     <mat-label class="label">username:</mat-label>
-    <input matInput formControlName="username" required><br><br>
+    <input matInput formControlName="username" (input)="convertToUppercase($event,'username')" required><br><br>
 
     <mat-label class="label">Nome completo:</mat-label>
-    <input matInput formControlName="name" required><br><br>
+    <input matInput formControlName="name" (input)="convertToUppercase($event,'name')" required><br><br>
 
     <mat-label class="label">CPF:</mat-label>
     <input matInput formControlName="cpf" mask="00000000000" required><br><br>
@@ -15,7 +15,7 @@
     <input matInput formControlName="bornDate" placeholder="dd-mm-yyyy" mask="00/00/0000"><br><br>
 
     <mat-label class="label">Gênero:</mat-label>
-    <input matInput formControlName="gender" placeholder="(M/F)" maxlength="1" required><br><br>
+    <input matInput formControlName="gender" placeholder="(M/F)" maxlength="1" (input)="convertToUppercase($event,'gender')" required><br><br>
 
     <mat-label class="label">Senha:</mat-label>
     <input matInput formControlName="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
@@ -24,22 +24,22 @@
     <input matInput formControlName="telephone" placeholder="51984332942" required><br><br>
 
     <mat-label class="label">Email:</mat-label>
-    <input matInput="email" required><br><br>
+    <input matInput formControlName="email" (input)="convertToUppercase($event,'email')" required><br><br>
 
     <mat-label class="label">Rua:</mat-label>
-    <input matInput formControlName="address" required><br><br>
+    <input matInput formControlName="address" (input)="convertToUppercase($event,'address')" required><br><br>
 
     <mat-label class="label">Número da Casa:</mat-label>
     <input matInput formControlName="houseNumber" required><br><br>
 
     <mat-label class="label">Observações:</mat-label>
-    <input  matInput formControlName="details" placeholder="APTO 402 BL.A"><br><br>
+    <input  matInput formControlName="details" placeholder="APTO 402 BL.A" (input)="convertToUppercase($event,'details')"><br><br>
 
     <mat-label class="label">Cidade:</mat-label>
-    <input matInput formControlName="city" required><br><br>
+    <input matInput formControlName="city" (input)="convertToUppercase($event,'city')" required><br><br>
 
     <mat-label class="label">Estado:</mat-label>
-    <input matInput formControlName="district" placeholder="RS"required><br><br>
+    <input matInput formControlName="district" placeholder="RS"  (input)="convertToUppercase($event,'district')" required><br><br>
 
     <mat-label class="label">Cep:</mat-label>
     <input matInput formControlName="zipCode" placeholder="93285000"  mask="00000000" required><br><br>
