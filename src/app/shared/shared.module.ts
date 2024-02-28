@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxMaskModule } from 'ngx-mask';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -15,15 +16,17 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     FormDialogComponent,
     SuccessDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatToolbarModule,
-    NgxMaskModule.forRoot(), // Adicione NgxMaskModule.forRoot() aqui
-  ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatToolbarModule,
+        NgxMaskModule.forRoot(),
+        MatInputModule,
+        // Adicione NgxMaskModule.forRoot() aqui
+    ],
   exports: [
     ErrorDialogComponent,
     FormDialogComponent,

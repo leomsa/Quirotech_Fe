@@ -5,6 +5,7 @@ import {PatientsService} from "../../../patients/services/patients.service";
 import {ContactType} from "../../../patients/models/ContactType";
 import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
+import {Patient} from "../../../patients/models/Patient";
 
 @Component({
   selector: 'app-form-dialog',
@@ -13,14 +14,13 @@ import {SuccessDialogComponent} from "../success-dialog/success-dialog.component
 })
 export class FormDialogComponent implements OnInit {
   patientForm!: FormGroup;
-  patientData: any;
 
   constructor(
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public patientData: Patient
   ) {
   }
 
@@ -31,50 +31,51 @@ export class FormDialogComponent implements OnInit {
 
   initForm(): void {
     this.patientForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      name: ['', Validators.required],
-      cpf: ['', Validators.required],
-      bornDate: ['', Validators.required],
-      gender: ['', Validators.required],
-      password: ['', Validators.required],
-      telephone: ['', Validators.required],
-      email: ['', Validators.required],
-      address: ['', Validators.required],
-      houseNumber: ['', Validators.required],
+      username: [''],
+      name: [''],
+      cpf: [''],
+      bornDate: [''],
+      gender: [''],
+      password: [''],
+      telephone: [''],
+      email: [''],
+      address: [''],
+      houseNumber: [''],
       details: [''],
-      city: ['', Validators.required],
-      district: ['', Validators.required],
-      zipCode: ['', Validators.required]
+      city: [''],
+      district: [''],
+      zipCode: ['']
     });
   }
 
   savePatient() {
-    const form = document.getElementById('patientForm') as HTMLFormElement;
-    const formData = new FormData(form);
+    // const form = document.getElementById('patientForm') as HTMLFormElement;
+    // const formData = new FormData(form);
+    const patientForm = this.patientForm;
     const patient = {
-      username: formData.get('username') as string,
-      name: formData.get('name') as string,
-      cpf: formData.get('cpf') as string,
-      bornDate: formData.get('date') as string,
-      gender: formData.get('gender') as string,
-      password: formData.get('password') as string,
+      username: this.patientForm.get('username')?.value as string,
+      name: this.patientForm.get('name')?.value as string,
+      cpf: this.patientForm.get('cpf')?.value as string,
+      bornDate: this.patientForm.get('date')?.value as string,
+      gender: this.patientForm.get('gender')?.value as string,
+      password: this.patientForm.get('password')?.value as string,
       contact: [
         {
-          contactValue: formData.get('email') as string,
+          contactValue: patientForm.get('email')?.value as string,
           contactType: ContactType.EMAIL
         },
         {
-          contactValue: formData.get('phone') as string,
+          contactValue: this.patientForm.get('phone')?.value as string,
           contactType: ContactType.PHONE_NUMBER
         }
       ],
       address: {
-        address: formData.get('address') as string,
-        houseNumber: formData.get('houseNumber') as string,
-        details: formData.get('details') as string,
-        city: formData.get('city') as string,
-        district: formData.get('district') as string,
-        zipCode: formData.get('zipCode') as string
+        address: this.patientForm.get('address')?.value as string,
+        houseNumber: this.patientForm.get('houseNumber')?.value as string,
+        details: this.patientForm.get('details')?.value as string,
+        city: this.patientForm.get('city')?.value as string,
+        district: this.patientForm.get('district')?.value as string,
+        zipCode: this.patientForm.get('zipCode')?.value as string
       }
     };
     this.patientService.createPatient(patient).subscribe(
@@ -100,27 +101,32 @@ export class FormDialogComponent implements OnInit {
       data: errorMsg
     });
   }
+
   convertToUppercase(event: any): void {
     event.target.value = event.target.value.toUpperCase();
   }
 
   private updatedPatientForm() {
-    this.patientForm.patchValue({
-      username: this.data.username,
-      name: this.data.name,
-      cpf: this.data.cpf,
-      bornDate: this.data.bornDate,
-      gender: this.data.gender,
-      password: this.data.password,
-      telephone: this.data.contact[1].contactValue,
-      email: this.data.contact[0].contactValue,
-      address: this.data.address.address,
-      houseNumber: this.data.address.houseNumber,
-      details: this.data.address.details,
-      city: this.data.address.city,
-      district: this.data.address.district,
-      zipCode: this.data.address.zipCode
+    this.dialogRef.afterOpened().subscribe(() => {
+      if (this.patientData) {
+        this.patientForm.patchValue({
+          username: this.patientData.username || '',
+          name: this.patientData.name || '',
+          cpf: this.patientData.cpf || '',
+          bornDate: this.patientData.bornDate || '',
+          gender: this.patientData.gender || '',
+          password: this.patientData.password || '',
+          telephone: this.patientData.contact[1]?.contactValue || '',
+          email: this.patientData.contact[0]?.contactValue || '',
+          address: this.patientData.address?.address || '',
+          houseNumber: this.patientData.address?.houseNumber || '',
+          details: this.patientData.address?.details || '',
+          city: this.patientData.address?.city || '',
+          district: this.patientData.address?.district || '',
+          zipCode: this.patientData.address?.zipCode || ''
+        });
+        console.table(this.patientForm.value);
+      }
     });
-    console.table(this.patientForm.value);
   }
 }

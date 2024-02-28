@@ -1,47 +1,47 @@
 <h1 mat-dialog-title class="dialogHeader"> Cadastro de Paciente</h1>
 <mat-dialog-content class="mat-typography">
-  <form id="patientForm" (input)="convertToUppercase($event)">
-    <label for="username" style="margin-top: 20px">Username:</label>
-    <input type="text" id="username" name="username" required><br><br>
+  <form autocomplete="off"  [formGroup]="patientForm" (input)="convertToUppercase($event)">
+    <mat-label  style="margin-top: 20px">Username:</mat-label>
+    <input matInput formControlName="username" required><br><br>
 
-    <label for="name">Nome completo:</label>
-    <input type="text" id="name" name="name" required><br><br>
+    <mat-label>Nome completo:</mat-label>
+    <input matInput formControlName="name" required><br><br>
 
-    <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" name="cpf" required><br><br>
+    <mat-label>CPF:</mat-label>
+    <input matInput formControlName="cpf" required><br><br>
 
-    <label for="bornDate">Data de Nascimento:</label>
-    <input type="text" id="bornDate" name="date" placeholder="dd-mm-yyyy" mask="00-00-0000">
+    <mat-label>Data de Nascimento:</mat-label>
+    <input matInput formControlName="bornDate" placeholder="dd-mm-yyyy" mask="00-00-0000">
 
-    <label for="gender">Gênero:</label>
-    <input type="text" id="gender" placeholder="(M/F)" name="gender" required><br><br>
+    <mat-label>Gênero:</mat-label>
+    <input matInput formControlName="gender" placeholder="(M/F)" maxlength="1" required><br><br>
 
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
+    <mat-label>Senha:</mat-label>
+    <input matInput formControlName="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
+    <mat-label>Número de Telefone:</mat-label>
+    <input matInput formControlName="telephone" placeholder="51984332942" required><br><br>
 
-    <label for="phone">Número de Telefone:</label>
-    <input type="tel" id="phone" name="phone" placeholder="51984332942" required><br><br>
+    <mat-label>Email:</mat-label>
+    <input matInput="email" required><br><br>
 
-    <label for="address">Rua:</label>
-    <input type="text" id="address" name="address" required><br><br>
+    <mat-label>Rua:</mat-label>
+    <input matInput formControlName="address" required><br><br>
 
-    <label for="houseNumber">Número da Casa:</label>
-    <input type="text" id="houseNumber" name="houseNumber" required><br><br>
+    <mat-label>Número da Casa:</mat-label>
+    <input matInput formControlName="houseNumber" required><br><br>
 
-    <label for="details">Observações:</label>
-    <input type="text" id="details"  placeholder="APTO 402 BL.A" name="details"><br><br>
+    <mat-label>Observações:</mat-label>
+    <input  matInput formControlName="details" placeholder="APTO 402 BL.A"><br><br>
 
-    <label for="city">Cidade:</label>
-    <input type="text" id="city" name="city" required><br><br>
+    <mat-label>Cidade:</mat-label>
+    <input matInput formControlName="city" required><br><br>
 
-    <label for="district">Estado:</label>
-    <input type="text" id="district" placeholder="RS" name="district" required><br><br>
+    <mat-label>Estado:</mat-label>
+    <input matInput formControlName="district" placeholder="RS"required><br><br>
 
-    <label for="zipCode">CEP:</label>
-    <input type="text" id="zipCode" placeholder="93285000" name="zipCode" mask="00000000" required><br><br>
+    <mat-label>CEP:</mat-label>
+    <input matInput formControlName="zipCode" placeholder="93285000"  mask="00000000" required><br><br>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
