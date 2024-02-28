@@ -4,16 +4,16 @@ label {
   font-weight: bold; // Texto em negrito
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"] {
-  width: 100%; // Ocupa toda a largura do container
-  padding: 8px; // Espaçamento interno
-  margin-bottom: 16px; // Espaço abaixo de cada input
-  border: 1px solid #ccc; // Borda cinza
-  border-radius: 4px; // Borda arredondada
-  box-sizing: border-box; // Inclui o padding e a borda na largura total
+.mat-input-element {
+  padding: 8px; /* Espaçamento interno */
+  border: 1px solid #ccc; /* Borda cinza */
+  border-radius: 4px; /* Borda arredondada */
+  box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+}
+
+.label{
+  font-weight: bold;
+  margin-top: 20px !important;
 }
 
 .mat-typography {

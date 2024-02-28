@@ -26,12 +26,12 @@ export class FormDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.updatedPatientForm();
+    this.updatedPatientForm(this.patientData);
   }
 
   initForm(): void {
     this.patientForm = this.formBuilder.group({
-      username: [''],
+      username: ['', Validators.required],
       name: [''],
       cpf: [''],
       bornDate: [''],
@@ -49,23 +49,28 @@ export class FormDialogComponent implements OnInit {
   }
 
   savePatient() {
-    // const form = document.getElementById('patientForm') as HTMLFormElement;
-    // const formData = new FormData(form);
     const patientForm = this.patientForm;
+
+    const rawBornDate  = this.patientForm.get('bornDate')?.value as string;
+    const day = parseInt(rawBornDate.substr(0, 2), 10);
+    const month = parseInt(rawBornDate.substr(2, 2), 10) - 1;
+    const year = parseInt(rawBornDate.substr(4, 4), 10);
+    const formattedBornDate = `${day}-${('0' + (month + 1)).slice(-2)}-${year}`;
+
     const patient = {
       username: this.patientForm.get('username')?.value as string,
       name: this.patientForm.get('name')?.value as string,
       cpf: this.patientForm.get('cpf')?.value as string,
-      bornDate: this.patientForm.get('date')?.value as string,
+      bornDate: formattedBornDate,
       gender: this.patientForm.get('gender')?.value as string,
       password: this.patientForm.get('password')?.value as string,
       contact: [
         {
-          contactValue: patientForm.get('email')?.value as string,
+          contactValue: patientForm.get('Email')?.value as string,
           contactType: ContactType.EMAIL
         },
         {
-          contactValue: this.patientForm.get('phone')?.value as string,
+          contactValue: this.patientForm.get('telephone')?.value as string,
           contactType: ContactType.PHONE_NUMBER
         }
       ],
@@ -106,27 +111,24 @@ export class FormDialogComponent implements OnInit {
     event.target.value = event.target.value.toUpperCase();
   }
 
-  private updatedPatientForm() {
-    this.dialogRef.afterOpened().subscribe(() => {
-      if (this.patientData) {
-        this.patientForm.patchValue({
-          username: this.patientData.username || '',
-          name: this.patientData.name || '',
-          cpf: this.patientData.cpf || '',
-          bornDate: this.patientData.bornDate || '',
-          gender: this.patientData.gender || '',
-          password: this.patientData.password || '',
-          telephone: this.patientData.contact[1]?.contactValue || '',
-          email: this.patientData.contact[0]?.contactValue || '',
-          address: this.patientData.address?.address || '',
-          houseNumber: this.patientData.address?.houseNumber || '',
-          details: this.patientData.address?.details || '',
-          city: this.patientData.address?.city || '',
-          district: this.patientData.address?.district || '',
-          zipCode: this.patientData.address?.zipCode || ''
-        });
-        console.table(this.patientForm.value);
-      }
-    });
+  private updatedPatientForm(patient: Patient) {
+    if (this.patientData) {
+      this.patientForm.patchValue({
+        username: patient.username,
+        name: patient.name,
+        cpf: patient.cpf,
+        bornDate: patient.bornDate,
+        gender: patient.gender,
+        password: patient.password,
+        email: patient.contact[0].contactValue,
+        phone: patient.contact[1].contactValue,
+        address: patient.address.address,
+        houseNumber: patient.address.houseNumber,
+        details: patient.address.details,
+        city: patient.address.city,
+        district: patient.address.district,
+        zipCode: patient.address.zipCode
+      });
+    }
   }
 }

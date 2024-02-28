@@ -7,7 +7,7 @@ export interface Patient {
   cpf: string;
   bornDate: string;
   gender: string;
-  password: string;//Temporary
+  password: string;
   contact: Contact[];
   address: Address;
 }
