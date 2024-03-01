@@ -18,23 +18,31 @@
   <div *ngIf="patients$ | async as patients; else loading ">
     <table mat-table [dataSource]="patients$" class="mat-elevation-z8">
 
+      <!--Actions colum -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let patient">
+          <span class="actionButtons">
+            <mat-icon class="custom-mini-fab" color="primary">open_in_new</mat-icon>
+            <mat-icon class="custom-mini-fab" color="primary" (click)="updatePatient(patient)">edit</mat-icon>
+            <mat-icon class="custom-mini-fab" color="primary" (click)="deletePatientbyCpf(patient.cpf)">delete
+            </mat-icon>
+          </span>
+        </td>
+      </ng-container>
+
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nome</th>
         <td mat-cell *matCellDef="let patient">
           {{ patient.name }}
-          <button mat-icon-button color="primary" class="custom-mini-fab">
-            <mat-icon class="mat-icon-sm">open_in_new</mat-icon>
-            <mat-icon class="mat-icon-sm" (click)="updatePatient(patient)">edit</mat-icon>
-            <mat-icon class="mat-icon-sm" (click)="deletePatientbyCpf(patient.cpf)">delete</mat-icon>
-          </button>
         </td>
       </ng-container>
 
       <!-- cpf Column -->
       <ng-container matColumnDef="cpf">
         <th mat-header-cell *matHeaderCellDef class="header">CPF</th>
-        <td mat-cell *matCellDef="let patient" class="header"> {{ patient.cpf }}</td>
+        <td mat-cell *matCellDef="let patient" class="header" style="align-items: center"> {{ patient.cpf }}</td>
       </ng-container>
 
       <!-- bornDate Column -->

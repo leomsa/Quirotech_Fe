@@ -16,7 +16,7 @@ import {SuccessDialogComponent} from "../../shared/components/success-dialog/suc
 })
 export class PatientsComponent implements OnInit {
   patients$: Observable<Patient[]>;
-  displayedColumns = ['name', 'cpf', 'bornDate', 'gender', 'email', 'phone', 'address', 'houseNumber', 'details', 'city', 'district', 'zipCode'];
+  displayedColumns = ['actions','name', 'cpf', 'bornDate', 'gender', 'email', 'phone', 'address', 'houseNumber', 'details', 'city', 'district', 'zipCode'];
   searchCpf: string = '';
 
   constructor(
