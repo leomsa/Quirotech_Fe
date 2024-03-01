@@ -9,7 +9,7 @@
     <input matInput formControlName="name" (input)="convertToUppercase($event,'name')" required><br><br>
 
     <mat-label class="label">CPF:</mat-label>
-    <input matInput formControlName="cpf" mask="00000000000" required><br><br>
+    <input matInput formControlName="cpf" mask="000.000.000.00" required><br><br>
 
     <mat-label class="label">Data de Nascimento:</mat-label>
     <input matInput formControlName="bornDate" placeholder="dd-mm-yyyy" mask="00/00/0000"><br><br>
@@ -21,7 +21,7 @@
     <input matInput  type="password" formControlName="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
 
     <mat-label class="label">Número de Telefone:</mat-label>
-    <input matInput formControlName="telephone" placeholder="51984332942" required><br><br>
+    <input matInput formControlName="telephone" placeholder="51984332942" mask="(00) 0000-00000" required><br><br>
 
     <mat-label class="label">Email:</mat-label>
     <input matInput formControlName="email" (input)="convertToUppercase($event,'email')" required><br><br>
