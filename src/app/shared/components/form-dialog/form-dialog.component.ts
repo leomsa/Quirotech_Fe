@@ -6,6 +6,7 @@ import {ContactType} from "../../../patients/models/ContactType";
 import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
 import {Patient} from "../../../patients/models/Patient";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-form-dialog',
@@ -14,19 +15,21 @@ import {Patient} from "../../../patients/models/Patient";
 })
 export class FormDialogComponent implements OnInit {
   patientForm!: FormGroup;
+  isEditMode!: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<FormDialogComponent>,
     private patientService: PatientsService,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public patientData: Patient
   ) {
   }
 
   ngOnInit(): void {
     this.initForm();
-    this.updatedPatientForm(this.patientData);
+    this.loadPatientData(this.patientData);
   }
 
   initForm(): void {
@@ -49,19 +52,69 @@ export class FormDialogComponent implements OnInit {
   }
 
   savePatient() {
-    const patientForm = this.patientForm;
+    this.activatedRoute.params.subscribe((params) => {
+      const id = params['id'];
+      if (id) {
+        this.editablePatient();
+      } else {
+      }
+      if (!this.patientData) {
+        const rawBornDate = this.patientForm.get('bornDate')?.value as string;
+        const day = parseInt(rawBornDate.substr(0, 2), 10);
+        const month = parseInt(rawBornDate.substr(2, 2), 10) - 1;
+        const year = parseInt(rawBornDate.substr(4, 4), 10);
+        const formattedBornDate = `${day}-${('0' + (month + 1)).slice(-2)}-${year}`;
 
-    const rawBornDate  = this.patientForm.get('bornDate')?.value as string;
-    const day = parseInt(rawBornDate.substr(0, 2), 10);
-    const month = parseInt(rawBornDate.substr(2, 2), 10) - 1;
-    const year = parseInt(rawBornDate.substr(4, 4), 10);
-    const formattedBornDate = `${day}-${('0' + (month + 1)).slice(-2)}-${year}`;
+        const patient = {
+          username: this.patientForm.get('username')?.value as string,
+          name: this.patientForm.get('name')?.value as string,
+          cpf: this.patientForm.get('cpf')?.value as string,
+          bornDate: formattedBornDate,
+          gender: this.patientForm.get('gender')?.value as string,
+          password: this.patientForm.get('password')?.value as string,
+          contact: [
+            {
+              contactValue: this.patientForm.get('email')?.value as string,
+              contactType: ContactType.EMAIL
+            },
+            {
+              contactValue: this.patientForm.get('telephone')?.value as string,
+              contactType: ContactType.PHONE_NUMBER
+            }
+          ],
+          address: {
+            address: this.patientForm.get('address')?.value as string,
+            houseNumber: this.patientForm.get('houseNumber')?.value as string,
+            details: this.patientForm.get('details')?.value as string,
+            city: this.patientForm.get('city')?.value as string,
+            district: this.patientForm.get('district')?.value as string,
+            zipCode: this.patientForm.get('zipCode')?.value as string
+          }
+        };
+        this.patientService.createPatient(patient).subscribe(
+          (response) => {
+            console.log(response);
+            this.onSuccess("Paciente cadastrado com sucesso.");
+          },
+          (error) => {
+            console.log(error);
+            this.onErrror("Não foi possível cadastrar pacicente, revise o cadastro!");
+          }
+        );
+      } else {
+        this.editablePatient();
+      }
+    })
+  };
 
+  editablePatient() {
+    this.isEditMode = true;
     const patient = {
+      id: this.patientData.id,
       username: this.patientForm.get('username')?.value as string,
       name: this.patientForm.get('name')?.value as string,
       cpf: this.patientForm.get('cpf')?.value as string,
-      bornDate: formattedBornDate,
+      bornDate: this.patientForm.get('bornDate')?.value as string,
       gender: this.patientForm.get('gender')?.value as string,
       password: this.patientForm.get('password')?.value as string,
       contact: [
@@ -74,7 +127,7 @@ export class FormDialogComponent implements OnInit {
           contactType: ContactType.PHONE_NUMBER
         }
       ],
-      address: {
+      address:{
         address: this.patientForm.get('address')?.value as string,
         houseNumber: this.patientForm.get('houseNumber')?.value as string,
         details: this.patientForm.get('details')?.value as string,
@@ -83,14 +136,14 @@ export class FormDialogComponent implements OnInit {
         zipCode: this.patientForm.get('zipCode')?.value as string
       }
     };
-    this.patientService.createPatient(patient).subscribe(
+    this.patientService.updatePatient(patient.id, patient).subscribe(
       (response) => {
         console.log(response);
-        this.onSuccess("Paciente cadastrado com sucesso.");
+        this.onSuccess("Paciente atualizado com sucesso.");
       },
       (error) => {
         console.log(error);
-        this.onErrror("Não foi possível cadastrar pacicente, revise o cadastro!");
+        this.onErrror("Não foi possível atualizar pacicente, revise o cadastro!");
       }
     );
   }
@@ -112,24 +165,23 @@ export class FormDialogComponent implements OnInit {
     this.patientForm.get(controlName)?.setValue(inputValue);
   }
 
-  private updatedPatientForm(patient: Patient) {
-    if (this.patientData) {
-      this.patientForm.patchValue({
-        username: patient.username,
-        name: patient.name,
-        cpf: patient.cpf,
-        bornDate: patient.bornDate,
-        gender: patient.gender,
-        password: patient.password,
-        email: patient.contact[0].contactValue,
-        phone: patient.contact[1].contactValue,
-        address: patient.address.address,
-        houseNumber: patient.address.houseNumber,
-        details: patient.address.details,
-        city: patient.address.city,
-        district: patient.address.district,
-        zipCode: patient.address.zipCode
-      });
-    }
+  private loadPatientData(patient: Patient) {
+    this.patientForm.patchValue({
+      id: patient.id,
+      username: patient.username,
+      name: patient.name,
+      cpf: patient.cpf,
+      bornDate: patient.bornDate,
+      gender: patient.gender,
+      password: patient.password,
+      email: patient.contact[0].contactValue,
+      phone: patient.contact[1].contactValue,
+      address: patient.address.address,
+      houseNumber: patient.address.houseNumber,
+      details: patient.address.details,
+      city: patient.address.city,
+      district: patient.address.district,
+      zipCode: patient.address.zipCode
+    });
   }
 }
