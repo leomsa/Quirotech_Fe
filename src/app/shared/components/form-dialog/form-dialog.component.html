@@ -18,7 +18,7 @@
     <input matInput formControlName="gender" placeholder="(M/F)" maxlength="1" (input)="convertToUppercase($event,'gender')" required><br><br>
 
     <mat-label class="label">Senha:</mat-label>
-    <input matInput formControlName="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
+    <input matInput  type="password" formControlName="password" placeholder="(apenas números, até 4 dígitos)" mask="0000" required><br><br>
 
     <mat-label class="label">Número de Telefone:</mat-label>
     <input matInput formControlName="telephone" placeholder="51984332942" required><br><br>
