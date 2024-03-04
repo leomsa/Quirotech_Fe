@@ -1,0 +1,6 @@
+version: 2
+updated:
+- packege-ecosystem: "npm"
+  directory: "/"
+  schedule:
+    interval: "weekly"
