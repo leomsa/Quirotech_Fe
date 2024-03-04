@@ -1,6 +1,6 @@
 name: Angular Build
 
-# {1}
+# Trigger the workflow on push or pull requests to the master branch
 on:
   push:
     branches: [ "master" ]
@@ -14,26 +14,29 @@ jobs:
     strategy:
       matrix:
         node-version: [16.15.1]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # Add more Node.js versions if needed
+        # node-version: [14.x, 16.x, 17.x]
     steps:
-      # {2}
+      # Checkout the source code
       - name: Checkout the source code
         uses: actions/checkout@v3
 
-      # {3}
-      - name: Setup Node.js $
+      # Setup Node.js
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: $
+          node-version: ${{ matrix.node-version }}
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
-      # {4}
+      # Install dependencies
       - name: Install dependencies
         run: npm install
-      # {5}
+
+      # Run tests
       - name: Run tests
         run: npm run test:ci
-      # {6}
+
+      # Build
       - name: Build
         run: npm run build
