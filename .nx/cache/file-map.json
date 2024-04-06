@@ -1,0 +1,413 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "@angular/animations": "^14.2.0",
+    "@angular/cdk": "^13.0.0",
+    "@angular/common": "^14.2.0",
+    "@angular/compiler": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    "@angular/forms": "^14.2.0",
+    "@angular/material": "^13.0.0",
+    "@angular/platform-browser": "^14.2.0",
+    "@angular/platform-browser-dynamic": "^14.2.0",
+    "@angular/router": "^14.2.0",
+    "@nrwl/angular": "^17.2.8",
+    "ngx-mask": "^13.2.2",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4",
+    "@angular-devkit/build-angular": "^14.2.10",
+    "@angular/cli": "~14.2.10",
+    "@angular/compiler-cli": "^14.2.0",
+    "@types/jasmine": "~4.0.0",
+    "jasmine-core": "~4.3.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "typescript": "~4.7.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "quirotech-frontend": [
+        {
+          "file": ".browserslistrc",
+          "hash": "17600754102500844387"
+        },
+        {
+          "file": ".editorconfig",
+          "hash": "6686520031028425313"
+        },
+        {
+          "file": ".github/dependabot.yml",
+          "hash": "17325763274789059659"
+        },
+        {
+          "file": ".github/workflows/build.yml",
+          "hash": "11319692709288099645"
+        },
+        {
+          "file": ".github/workflows/ng-update.yml",
+          "hash": "509444839472592467"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "13044518069027839699"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "5331566439708925252"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "4815948323043747099"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "5336636969995539451"
+        },
+        {
+          "file": "README.md",
+          "hash": "4122946065894984188"
+        },
+        {
+          "file": "angular.json",
+          "hash": "5149476745488011550"
+        },
+        {
+          "file": "karma.conf.js",
+          "hash": "9592410801049636689",
+          "deps": [
+            [
+              "npm:karma-jasmine",
+              "dynamic"
+            ],
+            [
+              "npm:karma-chrome-launcher",
+              "dynamic"
+            ],
+            [
+              "npm:karma-jasmine-html-reporter",
+              "dynamic"
+            ],
+            [
+              "npm:karma-coverage",
+              "dynamic"
+            ],
+            [
+              "npm:@angular-devkit/build-angular",
+              "dynamic"
+            ],
+            [
+              "npm:path",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "6252181399411258168"
+        },
+        {
+          "file": "package.json",
+          "hash": "12487656852642559966",
+          "deps": [
+            "npm:@angular/animations",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/router",
+            "npm:@nrwl/angular",
+            "npm:ngx-mask",
+            "npm:rxjs",
+            "npm:tslib",
+            "npm:zone.js",
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@types/jasmine",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "src/app/app-routing.module.ts",
+          "hash": "13877986964188074726",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "8804523478294850312"
+        },
+        {
+          "file": "src/app/app.component.scss",
+          "hash": "2834801711652230193"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "15051323456931117621",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "14243575740581319223",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/app.module.ts",
+          "hash": "11063054870075814158",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/material",
+            "npm:@angular/common",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/patients/models/Adrress.ts",
+          "hash": "13780532796128200565"
+        },
+        {
+          "file": "src/app/patients/models/Contact.ts",
+          "hash": "16918699238143680942"
+        },
+        {
+          "file": "src/app/patients/models/ContactType.ts",
+          "hash": "387296052889423062"
+        },
+        {
+          "file": "src/app/patients/models/Patient.ts",
+          "hash": "7161537555546223255"
+        },
+        {
+          "file": "src/app/patients/patients-routing.module.ts",
+          "hash": "2125816815064273318",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/patients/patients.module.ts",
+          "hash": "12314131185257322713",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "src/app/patients/patients/patients.component.html",
+          "hash": "2175952766731082431"
+        },
+        {
+          "file": "src/app/patients/patients/patients.component.scss",
+          "hash": "10907122408657880668"
+        },
+        {
+          "file": "src/app/patients/patients/patients.component.spec.ts",
+          "hash": "2264235398896815661",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/patients/patients/patients.component.ts",
+          "hash": "2443965582049158504",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "src/app/patients/services/patients.service.spec.ts",
+          "hash": "15485142284099963366",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/patients/services/patients.service.ts",
+          "hash": "7671313540373370753",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/shared/components/error-dialog/error-dialog.component.html",
+          "hash": "17014405613462033170"
+        },
+        {
+          "file": "src/app/shared/components/error-dialog/error-dialog.component.scss",
+          "hash": "12110486288971837190"
+        },
+        {
+          "file": "src/app/shared/components/error-dialog/error-dialog.component.spec.ts",
+          "hash": "16177357648148992054",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/shared/components/error-dialog/error-dialog.component.ts",
+          "hash": "4506965057033168249",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "src/app/shared/components/form-dialog/form-dialog.component.html",
+          "hash": "15492841526847990588"
+        },
+        {
+          "file": "src/app/shared/components/form-dialog/form-dialog.component.scss",
+          "hash": "229154566595230593"
+        },
+        {
+          "file": "src/app/shared/components/form-dialog/form-dialog.component.spec.ts",
+          "hash": "2379129048131399653",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/shared/components/form-dialog/form-dialog.component.ts",
+          "hash": "17855013544357883091",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/forms",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "src/app/shared/components/success-dialog/success-dialog.component.html",
+          "hash": "2439441908978464086"
+        },
+        {
+          "file": "src/app/shared/components/success-dialog/success-dialog.component.scss",
+          "hash": "12110486288971837190"
+        },
+        {
+          "file": "src/app/shared/components/success-dialog/success-dialog.component.spec.ts",
+          "hash": "16731299008469756255",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/shared/components/success-dialog/success-dialog.component.ts",
+          "hash": "11860924696455320247",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "src/app/shared/shared.module.ts",
+          "hash": "12881421362160905422",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "npm:@angular/forms",
+            "npm:ngx-mask"
+          ]
+        },
+        {
+          "file": "src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/assets/favicon.ico",
+          "hash": "6042766047476327569"
+        },
+        {
+          "file": "src/assets/quiroLifeLogoDefinitivo.png",
+          "hash": "1235698836891810301"
+        },
+        {
+          "file": "src/environments/environment.prod.ts",
+          "hash": "5406836414239361753"
+        },
+        {
+          "file": "src/environments/environment.ts",
+          "hash": "17458466784506237106"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "14171600716288730112"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "10677612470474905821",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser-dynamic"
+          ]
+        },
+        {
+          "file": "src/polyfills.ts",
+          "hash": "2035846685621806592",
+          "deps": [
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "src/styles.scss",
+          "hash": "7446926195066403515"
+        },
+        {
+          "file": "src/test.ts",
+          "hash": "715821617531147605",
+          "deps": [
+            "npm:zone.js",
+            "npm:@angular/core",
+            "npm:@angular/platform-browser-dynamic"
+          ]
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "9041030522571917449"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "16278073248419667096"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "17198424518534092990"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}

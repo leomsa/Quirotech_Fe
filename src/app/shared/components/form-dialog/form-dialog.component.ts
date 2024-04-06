@@ -82,7 +82,7 @@ export class FormDialogComponent implements OnInit {
               contactType: ContactType.PHONE_NUMBER
             }
           ],
-          address: {
+          address:{
             address: this.patientForm.get('address')?.value as string,
             houseNumber: this.patientForm.get('houseNumber')?.value as string,
             details: this.patientForm.get('details')?.value as string,
